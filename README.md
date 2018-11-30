@@ -8,7 +8,7 @@ A set of experimental tests used to test [Sample Galen Framework](http://testapp
 - Not thread-safe handling, don't execute tests concurrently
 
 ## Requirements & Installation
-- [maven](https://maven.apache.org/): Follow install guide [here](https://maven.apache.org/install.html)
+- [maven](https://maven.apache.org/install.html)
 - [Chrome](https://www.google.com/chrome/)
 
 ## How to run tests
