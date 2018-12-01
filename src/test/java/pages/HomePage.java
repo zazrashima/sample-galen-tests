@@ -14,7 +14,7 @@ public class HomePage extends BasePage {
     //Page Variables
     private String baseURL = PropertyManager.getInstance().getUrl();
 
-  // Web Elements
+    //Web Elements
     private By signInButtonBy = By.xpath("//*[@id=\"welcome-page\"]/p[3]/button");
     private By addNoteButtonBy = By.xpath("//*[@id=\"my-notes-page\"]/button");
 
@@ -30,8 +30,10 @@ public class HomePage extends BasePage {
         return new LoginPage(driver);
     }
 
+    //Click on Add Note button
     public HomePage clickAddNoteButton() {
         click(addNoteButtonBy);
         return this;
     }
+
 }

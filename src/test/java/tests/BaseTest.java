@@ -1,35 +1,33 @@
 package tests;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+import driver.DriverManager;
+import driver.DriverManagerFactory;
+import driver.DriverType;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
 import utils.Log;
 
 public class BaseTest {
     public WebDriver driver;
+    public DriverManager driverManager;
 
-    @BeforeClass
+    @BeforeTest
     public void setup() {
         // Write a Log when tests is starting
         Log.startLog("Test is stating!");
-
-        //Create a Chrome driver. All test classes use this.
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-
-        //Maximize Window
-        driver.manage().window().maximize();
+        driverManager = DriverManagerFactory.getManager(DriverType.CHROME);
+        driver = driverManager.getDriver();
     }
 
-    public WebDriver getWebDriver() {
-        return driver;
+    @BeforeClass
+    public void storeDriver(ITestContext ctx){
+        ctx.setAttribute("driver", driver);
     }
 
-    @AfterClass
+    @AfterSuite
     public void tearDown() {
         Log.endLog("Test is ending!");
-        driver.quit();
+        driverManager.quitDriver();
     }
 }

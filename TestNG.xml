@@ -1,22 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Suite1" verbose="1"  >
-
-    <test name="Login Test" >
+    <test name="Check if existing user can create a new note" >
         <classes>
-            <class name="tests.LoginTest" >
-                <methods>
-                    <include name = "successfulLogin"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
-    <test name="New Note Test" >
-        <classes>
-            <class name="tests.NotesTest" >
-                <methods>
-                    <include name = "newNote"/>
-                </methods>
-            </class>
+            <class name="tests.LoginTest" />
+            <class name="tests.NotesTest" />
         </classes>
     </test>
 </suite>

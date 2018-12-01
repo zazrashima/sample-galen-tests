@@ -1,5 +1,9 @@
 package tests;
 
+import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+import org.testng.ITestContext;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
@@ -10,26 +14,43 @@ import java.lang.reflect.Method;
 
 public class LoginTest extends BaseTest {
 
-  private String username = PropertyManager.getInstance().getEmail();
-  private String password = PropertyManager.getInstance().getPassword();
+    private String username = PropertyManager.getInstance().getEmail();
+    private String password = PropertyManager.getInstance().getPassword();
+    private HomePage homePage;
+    private LoginPage loginPage;
+    private WebDriver driver;
 
-  @Test(priority = 0, description = "Successful Login Scenario with valid username and password")
-  public void successfulLogin(Method method) {
-      Log.info(method.getName() + " test is starting.");
+    @BeforeClass
+    public void getCtx(ITestContext ctx){
+        driver = (WebDriver) ctx.getAttribute("driver");
+    }
 
-      HomePage homePage = new HomePage(driver);
-      LoginPage loginPage = new LoginPage(driver);
+    @Test
+    public void launch() {
+        homePage = new HomePage(driver);
 
-      Log.info("Opening Sample Website for Galen Framework website");
-      homePage.goToHomePage();
+        Log.info("Opening Sample Website for Galen Framework website");
+        homePage.goToHomePage();
 
-      Log.info("Opening Login page");
-      homePage.gotoLoginPage();
+        Log.info("Verifying homepage is loaded");
+        homePage.waitForPageLoaded();
 
-      Log.info("Trying to login.");
-      loginPage.loginToTestApp(username, password);
+        Log.info("Opening Login page");
+        homePage.gotoLoginPage();
+    }
 
-      Log.info("Verifying login.");
-      loginPage.verfiyTextOnPage("My Notes");
-  }
+    @Test
+    public void loginTest(Method method) {
+        Log.info(method.getName() + " test is starting.");
+        loginPage = new LoginPage(driver);
+
+        Log.info("Verifying login page is loaded");
+        loginPage.waitForPageLoaded();
+
+        Log.info("Logging in");
+        loginPage.loginToTestApp(username, password);
+
+        Log.info("Verifying successful login");
+        loginPage.verfiyTextOnPage("My Notes");
+    }
 }

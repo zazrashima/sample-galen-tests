@@ -9,7 +9,7 @@ public class NotesPage extends BasePage {
         super(driver);
     }
 
-  // Web Elements
+    // Web Elements
     private By titleNoteInputBy = By.xpath("//*[@id=\"ad-note-page\"]/p[1]/input");
     private By descriptionNoteInputBy = By.xpath("//*[@id=\"ad-note-page\"]/p[2]/textarea");
     private By addNoteButtonBy = By.xpath("//*[@id=\"ad-note-page\"]/p[3]/button[1]");
@@ -21,4 +21,5 @@ public class NotesPage extends BasePage {
         click(addNoteButtonBy);
         return this;
     }
+
 }

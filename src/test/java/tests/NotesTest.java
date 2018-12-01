@@ -1,5 +1,8 @@
 package tests;
 
+import org.openqa.selenium.WebDriver;
+import org.testng.ITestContext;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
@@ -9,39 +12,31 @@ import utils.PropertyManager;
 
 import java.lang.reflect.Method;
 
-public class NotesTest extends BaseTest {
+public class NotesTest{
 
-    private String username = PropertyManager.getInstance().getEmail();
-    private String password = PropertyManager.getInstance().getPassword();
+    private HomePage homePage;
+    private NotesPage notesPage;
+    private WebDriver driver;
 
-    @Test(priority = 0, description = "Successful Login Scenario with valid username and password")
-    public void newNote(Method method) {
-        Log.info(method.getName() + " test is starting.");
-
-        HomePage homePage = new HomePage(driver);
-        LoginPage loginPage = new LoginPage(driver);
-        NotesPage notesPage = new NotesPage(driver);
-
-        Log.info("Opening Sample Website for Galen Framework website");
-        homePage.goToHomePage();
-
-        Log.info("Opening Login page");
-        homePage.gotoLoginPage();
-
-        Log.info("Trying to login.");
-        loginPage.loginToTestApp(username, password);
-
-        Log.info("Verifying login.");
-        loginPage.verfiyTextOnPage("My Notes");
-
-        Log.info("Clicking on Add note button");
-        homePage.clickAddNoteButton();
-
-        Log.info("Adding a new note.");
-        notesPage.addNewNote("Vinh creates a new note", "Sample Description");
-
-        Log.info("Verify a new note is created successfully");
-        notesPage.verfiyTextOnPage("Vinh creates a new note");
+    @BeforeClass
+    public void getCtx(ITestContext ctx) {
+        driver = (WebDriver) ctx.getAttribute("driver");
     }
 
+    @Test
+    public void newNoteTest(Method method) {
+        Log.info(method.getName() + " test is starting.");
+        notesPage = new NotesPage(driver);
+        homePage = new HomePage(driver);
+        notesPage.waitForPageLoaded();
+
+        Log.info("Clicking on Add Note button ");
+        homePage.clickAddNoteButton();
+
+        Log.info("Creating a new note ");
+        notesPage.addNewNote("Vinh creates a new note","Any description here");
+
+        Log.info("Verifying a new note is created successfully");
+        notesPage.verfiyTextOnPage("Vinh creates a new note");
+    }
 }
