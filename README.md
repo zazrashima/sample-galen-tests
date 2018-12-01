@@ -17,4 +17,4 @@ A set of experimental tests used to test [Sample Galen Framework](http://testapp
 - On either Command Line (Windows) or Terminal (macOS/ Linux), execute maven command to run tests: `mvn clean test`. It will execute all tests at the same time
 
 ## Acknowledgement
-[webdrivermanager](https://github.com/bonigarcia/webdrivermanager) to help initalizinng the latest version of Selenium WebDriver
+[webdrivermanager](https://github.com/bonigarcia/webdrivermanager) to help initializing the latest version of Selenium WebDriver
