@@ -3,6 +3,7 @@ package utils;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.io.File;
 
 public class PropertyManager {
     private static PropertyManager instance;
