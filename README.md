@@ -10,10 +10,12 @@ A set of experimental tests used to test [Sample Galen Framework](http://testapp
 ## Requirements & Installation
 - [maven](https://maven.apache.org/install.html)
 - [Chrome](https://www.google.com/chrome/)
+- [Firefox](https://www.mozilla.org/en-US/firefox/new/)
 
 ## How to run tests
 - Checkout this project
 - (Not recommended) Adjust `email` and `password` from  `src\test\resources\configuration.properties` accordingly based on the newest authenticated information from http://testapp.galenframework.com
+- Open [TestNG.xml](https://github.com/zazrashima/sample-galen-tests/blob/master/TestNG.xml) and change (browser)[https://github.com/zazrashima/sample-galen-tests/blob/c9c7b9bc1a8230f684338998f89b6e99d6001d73/TestNG.xml#L3] to Firefox if you would like to execute tests on Firefox, otherwise default executor will be Chrome
 - On either Command Line (Windows) or Terminal (macOS/ Linux), execute maven command to run tests: `mvn clean test`. It will execute all tests at the same time
 
 ## Acknowledgement
