@@ -4,7 +4,7 @@ A set of experimental tests used to test [Sample Galen Framework](http://testapp
 - Verify a new note is created successfully
 
 ## Limitations and Know Issues
-- Only Chrome is supported. Other browsers will be supported later
+- Only popular browsers such as Chrome and Firefox is supported. Other browsers (Internet Explorer, Safari, etc...) will be supported later
 - Not thread-safe handling, don't execute tests concurrently
 
 ## Requirements & Installation
