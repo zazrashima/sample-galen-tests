@@ -9,7 +9,7 @@ import org.testng.annotations.*;
 import utils.Log;
 
 public class BaseTest {
-    public WebDriver driver;
+    public static WebDriver driver;
     public DriverManager driverManager;
 
     @BeforeTest

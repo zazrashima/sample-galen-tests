@@ -1,7 +1,8 @@
 package tests;
 
+import keywords.helper.Element;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -9,8 +10,8 @@ import pages.HomePage;
 import pages.LoginPage;
 import utils.Log;
 import utils.PropertyManager;
-
 import java.lang.reflect.Method;
+import static org.junit.Assert.assertEquals;
 
 public class LoginTest extends BaseTest {
 
@@ -51,6 +52,6 @@ public class LoginTest extends BaseTest {
         loginPage.loginToTestApp(username, password);
 
         Log.info("Verifying successful login");
-        loginPage.verfiyTextOnPage("My Notes");
+        assertEquals(Element.isElementVisible(By.xpath("\"//*[@id=\\\"my-notes-page\\\"]/h2\"")),true);
     }
 }
