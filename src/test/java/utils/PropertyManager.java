@@ -3,11 +3,13 @@ package utils;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.io.File;
 
 public class PropertyManager {
     private static PropertyManager instance;
     private static final Object lock = new Object();
-    private static String propertyFilePath = System.getProperty("user.dir") + "\\src\\test\\resources\\configuration.properties";
+    private static String propertyFilePath = System.getProperty("user.dir") + File.separator + "src" +
+        File.separator +  "test" + File.separator+ "resources" + File.separator + "configuration.properties";    
     private static String url;
     private static String email;
     private static String password;

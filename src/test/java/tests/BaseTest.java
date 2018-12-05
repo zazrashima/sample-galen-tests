@@ -13,10 +13,17 @@ public class BaseTest {
     public DriverManager driverManager;
 
     @BeforeTest
-    public void setup() {
+    @Parameters("browser")
+    public void setup(String browser) {
         // Write a Log when tests is starting
         Log.startLog("Test is stating!");
-        driverManager = DriverManagerFactory.getManager(DriverType.CHROME);
+
+        if (browser.equalsIgnoreCase("chrome")) {
+            driverManager = DriverManagerFactory.getManager(DriverType.CHROME);
+        }
+        else if (browser.equalsIgnoreCase("firefox")) {
+            driverManager = DriverManagerFactory.getManager(DriverType.FIREFOX);
+        }
         driver = driverManager.getDriver();
     }
 
