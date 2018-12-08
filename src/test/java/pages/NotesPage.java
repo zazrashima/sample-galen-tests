@@ -10,9 +10,9 @@ public class NotesPage extends BasePage {
     }
 
     // Web Elements
-    private By titleNoteInputBy = By.xpath("//*[@id=\"ad-note-page\"]/p[1]/input");
-    private By descriptionNoteInputBy = By.xpath("//*[@id=\"ad-note-page\"]/p[2]/textarea");
-    private By addNoteButtonBy = By.xpath("//*[@id=\"ad-note-page\"]/p[3]/button[1]");
+    private final By titleNoteInputBy = By.xpath("//*[@id=\"ad-note-page\"]/p[1]/input");
+    private final By descriptionNoteInputBy = By.xpath("//*[@id=\"ad-note-page\"]/p[2]/textarea");
+    private final By addNoteButtonBy = By.xpath("//*[@id=\"ad-note-page\"]/p[3]/button[1]");
 
     //Page Methods
     public NotesPage addNewNote (String title, String description) {

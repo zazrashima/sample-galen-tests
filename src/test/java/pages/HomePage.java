@@ -12,11 +12,11 @@ public class HomePage extends BasePage {
     }
 
     //Page Variables
-    private String baseURL = PropertyManager.getInstance().getUrl();
+    private final String baseURL = PropertyManager.getInstance().getUrl();
 
     //Web Elements
-    private By signInButtonBy = By.xpath("//*[@id=\"welcome-page\"]/p[3]/button");
-    private By addNoteButtonBy = By.xpath("//*[@id=\"my-notes-page\"]/button");
+    private final By signInButtonBy = By.xpath("//*[@id=\"welcome-page\"]/p[3]/button");
+    private final By addNoteButtonBy = By.xpath("//*[@id=\"my-notes-page\"]/button");
 
     //Go to Homepage
     public HomePage goToHomePage() {

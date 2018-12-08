@@ -11,7 +11,7 @@ import pages.LoginPage;
 import utils.Log;
 import utils.PropertyManager;
 import java.lang.reflect.Method;
-import static org.junit.Assert.assertEquals;
+import static org.testng.AssertJUnit.assertEquals;
 
 public class LoginTest extends BaseTest {
 
@@ -52,6 +52,7 @@ public class LoginTest extends BaseTest {
         loginPage.loginToTestApp(username, password);
 
         Log.info("Verifying successful login");
-        assertEquals(Element.isElementVisible(By.xpath("\"//*[@id=\\\"my-notes-page\\\"]/h2\"")),true);
+        assertEquals(Element.isElementVisible(By.xpath("//*[@id=\"my-notes-page\"]/h2")),true);
+
     }
 }

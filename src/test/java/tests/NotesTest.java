@@ -5,17 +5,13 @@ import org.testng.ITestContext;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.HomePage;
-import pages.LoginPage;
 import pages.NotesPage;
 import utils.Log;
-import utils.PropertyManager;
 
 import java.lang.reflect.Method;
 
 public class NotesTest{
 
-    private HomePage homePage;
-    private NotesPage notesPage;
     private WebDriver driver;
 
     @BeforeClass
@@ -26,8 +22,8 @@ public class NotesTest{
     @Test
     public void newNoteTest(Method method) {
         Log.info(method.getName() + " test is starting.");
-        notesPage = new NotesPage(driver);
-        homePage = new HomePage(driver);
+        NotesPage notesPage = new NotesPage(driver);
+        HomePage homePage = new HomePage(driver);
         notesPage.waitForPageLoaded();
 
         Log.info("Clicking on Add Note button ");

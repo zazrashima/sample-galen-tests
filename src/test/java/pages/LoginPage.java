@@ -10,9 +10,9 @@ public class LoginPage extends BasePage {
     }
 
     // Web Elements
-    private By usernameBy = By.name("login.username");
-    private By passwordBy = By.name("login.password");
-    private By loginButtonBy = By.xpath("//*[@id=\"login-page\"]/p[3]/button[1]");
+    private final By usernameBy = By.name("login.username");
+    private final By passwordBy = By.name("login.password");
+    private final By loginButtonBy = By.xpath("//*[@id=\"login-page\"]/p[3]/button[1]");
 
     // Page Methods
     public LoginPage loginToTestApp(String username, String password) {

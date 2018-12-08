@@ -9,8 +9,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 class BasePage {
-    WebDriver driver;
-    private WebDriverWait wait;
+    final WebDriver driver;
+    private final WebDriverWait wait;
 
     //Constructor
     BasePage(WebDriver driver) {
@@ -49,12 +49,7 @@ class BasePage {
 
     // Wait for page load
     public void waitForPageLoaded() {
-        ExpectedCondition<Boolean> expectation = new
-                ExpectedCondition<Boolean>() {
-                    public Boolean apply(WebDriver driver) {
-                        return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
-                    }
-                };
+        ExpectedCondition<Boolean> expectation = driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
         try {
             Thread.sleep(1000);
             WebDriverWait wait = new WebDriverWait(driver, 30);
@@ -65,7 +60,7 @@ class BasePage {
     }
 
     public boolean verfiyTextOnPage(String textToVerify) {
-        boolean textFound = false;
+        boolean textFound;
         try {
             driver.findElement(By.xpath("//*[contains(text(),${textToVerify})]"));
             textFound = true;
