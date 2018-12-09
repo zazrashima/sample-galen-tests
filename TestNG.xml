@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Suite1" verbose="1"  >
-    <listeners>
-        <listener class-name="com.epam.reportportal.testng.ReportPortalTestNGListener" />
-    </listeners>
     <parameter name = "browser" value = "chrome" />
     <test name="Check if existing user can create a new note" >
         <classes>

@@ -2,6 +2,10 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import utils.Log;
 import utils.PropertyManager;
 
 public class HomePage extends BasePage {
@@ -15,24 +19,20 @@ public class HomePage extends BasePage {
     private final String baseURL = PropertyManager.getInstance().getUrl();
 
     //Web Elements
-    private final By signInButtonBy = By.xpath("//*[@id=\"welcome-page\"]/p[3]/button");
-    private final By addNoteButtonBy = By.xpath("//*[@id=\"my-notes-page\"]/button");
+    @FindBy(how = How.CSS, using = "#welcome-page > p:nth-child(4) > button")
+    private WebElement signInButton;
 
     //Go to Homepage
     public HomePage goToHomePage() {
-        driver.get(baseURL);
+        Log.info("Opening " + baseURL);
+        visit(baseURL);
         return this;
     }
 
     //Go to LoginPage
-    public LoginPage gotoLoginPage() {
-        click(signInButtonBy);
-        return new LoginPage(driver);
-    }
-
-    //Click on Add Note button
-    public HomePage clickAddNoteButton() {
-        click(addNoteButtonBy);
+    public HomePage clickLoginButton() {
+        Log.info("Click Login button");
+        click(signInButton);
         return this;
     }
 

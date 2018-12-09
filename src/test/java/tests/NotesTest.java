@@ -22,17 +22,13 @@ public class NotesTest{
     @Test
     public void newNoteTest(Method method) {
         Log.info(method.getName() + " test is starting.");
-        NotesPage notesPage = new NotesPage(driver);
         HomePage homePage = new HomePage(driver);
-        notesPage.waitForPageLoaded();
+        NotesPage notesPage = new NotesPage(driver);
 
-        Log.info("Clicking on Add Note button ");
-        homePage.clickAddNoteButton();
+        notesPage.clickAddNewNoteButton()
+                .addNewNote("Vinh creates a new note","Any description here");
 
-        Log.info("Creating a new note ");
-        notesPage.addNewNote("Vinh creates a new note","Any description here");
-
-        Log.info("Verifying a new note is created successfully");
+        Log.info("Verify a new note is created successfully");
         notesPage.verfiyTextOnPage("Vinh creates a new note");
     }
 }

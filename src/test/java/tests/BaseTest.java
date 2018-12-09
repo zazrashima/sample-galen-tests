@@ -4,6 +4,7 @@ import driver.DriverManager;
 import driver.DriverManagerFactory;
 import driver.DriverType;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 import utils.Log;
@@ -17,7 +18,6 @@ public class BaseTest {
     public void setup(String browser) {
         // Write a Log when tests is starting
         Log.startLog("Test is stating!");
-
         if (browser.equalsIgnoreCase("chrome")) {
             driverManager = DriverManagerFactory.getManager(DriverType.CHROME);
         }
